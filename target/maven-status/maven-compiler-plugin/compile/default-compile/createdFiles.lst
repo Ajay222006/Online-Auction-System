@@ -1,0 +1,4 @@
+com\auction\controller\BidController.class
+com\auction\AuctionApplication.class
+com\auction\model\Bid.class
+com\auction\service\BidService.class

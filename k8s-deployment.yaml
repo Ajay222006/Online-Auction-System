@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auction-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auction
+  template:
+    metadata:
+      labels:
+        app: auction
+    spec:
+      containers:
+      - name: auction
+        image: ajay222006/auction:latest
+        ports:
+        - containerPort: 8080
