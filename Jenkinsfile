@@ -7,12 +7,6 @@ pipeline {
 
     stages {
 
-        stage('Clone') {
-            steps {
-                git 'https://github.com/Ajay222006/Online-Auction-System.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 bat 'mvn clean package'
@@ -34,7 +28,7 @@ pipeline {
         stage('Docker Push') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-                    bat 'echo %PASS% | docker login -u %USER% --password-stdin'
+                    bat 'docker login -u %USER% -p %PASS%'
                     bat 'docker push %DOCKER_IMAGE%'
                 }
             }
